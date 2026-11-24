@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 struct Record{		// 생활관생 관리 레코드
   char name[20];	// 성명				
@@ -18,10 +19,14 @@ void findMembers(struct Record* p[], int n);	// 검색 (이름)
 void saveReport(struct Record* p[], int n);	// 보고서 저장
 
 int main(){
+  SetConsoleOutputCP(65001);
+  SetConsoleCP(65001);
+
   struct Record* members[100]; 	// 최대 100명까지 관리할 수 있는 포인터 배열
   int count;	// 현재등록된 관생 수
   int menu;	// 메뉴번호
   count = loadMembers(members);	// 시작 전에 파일로부터 관생 리스트를 모두 읽어온다.
+  printf("Edited by 내이름\n");
   while(1)
   {
     printf("\n[1]목록 [2]호실변경 [3]벌점부여 [4]검색 [5]보고서 저장 [0]종료 >> ");
